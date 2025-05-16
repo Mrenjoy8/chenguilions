@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tile as TileType, Direction, HexCoord, TileValue } from '../core/types';
-import { hexToPixel, coordsEqual, getAllGridCoords } from '../core/hexUtils';
-import { TILE_COLORS, HEX_SIZE, HEX_SPACING } from '../core/constants';
+import { hexToPixel, coordsEqual, /* getAllGridCoords */ } from '../core/hexUtils';
+import { /* TILE_COLORS, */ HEX_SIZE, HEX_SPACING } from '../core/constants';
 import useGameStore from '../stores/gameStore';
 import useSwipeDetection from '../hooks/useSwipeDetection';
 
@@ -610,7 +610,7 @@ const HexGrid: React.FC = () => {
   const { grid, validCoords, moveInDirection, resetGame, lastMergeTriplet } = useGameStore();
   const svgRef = React.useRef<SVGSVGElement>(null);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
+  const [, setViewportSize] = useState({ width: 0, height: 0 });
   
   // Visual feedback states
   const [scorePopups, setScorePopups] = useState<{id: string; value: number; position: {x: number, y: number}}[]>([]);

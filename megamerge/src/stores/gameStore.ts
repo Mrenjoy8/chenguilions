@@ -50,7 +50,7 @@ const useGameStore = create<GameStore>((set, get) => {
       if (currentState.isGameOver || currentState.isWon) return;
       
       // Get triplets before the move to compare after
-      const beforeTriplets = findAllTriplets(currentState.grid);
+      // const beforeTriplets = findAllTriplets(currentState.grid);
       const beforeTileIds = new Set(currentState.grid.map(tile => tile.id));
       
       const newState = coreMove(currentState, direction);

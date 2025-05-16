@@ -1,17 +1,17 @@
-import { Tile, HexCoord, Direction, TileValue, GameState } from './types';
-import { GRID_SIZE, TILE_VALUES } from './constants';
+import { Tile, /* HexCoord, */ Direction, TileValue, GameState } from './types';
+// import { GRID_SIZE, TILE_VALUES } from './constants';
 import { 
   getAllGridCoords, 
-  isValidCoord, 
+  /* isValidCoord, */
   coordsEqual, 
-  addCoords, 
+  /* addCoords, */
   getAllLines 
 } from './hexUtils';
 import { 
   getTileAtCoord,
   canMergeAnywhere,
   resolveAllMerges,
-  resetMergeFlags
+  /* resetMergeFlags */
 } from './mergeLogic';
 
 /**

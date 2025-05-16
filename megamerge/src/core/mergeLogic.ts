@@ -1,4 +1,4 @@
-import { Tile, HexCoord, TileValue } from './types';
+import { Tile, HexCoord, /* TileValue */ } from './types';
 import { coordsEqual, getNeighbors } from './hexUtils';
 import { getNextValue } from './constants';
 
