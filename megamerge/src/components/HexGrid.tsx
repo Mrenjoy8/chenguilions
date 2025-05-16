@@ -881,7 +881,7 @@ const HexGrid: React.FC = () => {
         style={{ 
           height: 'min(85vh, 85vw)',
           margin: '2rem auto',
-          background: 'radial-gradient(circle at center, #1e1b4b 0%, #0f0a2a 100%)',
+          background: 'radial-gradient(circle at center, #ffffff 0%, #0f0a2a 100%)',
           boxShadow: 'inset 0 0 80px rgba(30, 20, 60, 0.6), 0 10px 30px rgba(0, 0, 0, 0.4)',
           border: '2px solid rgba(93, 79, 162, 0.3)'
         }}
