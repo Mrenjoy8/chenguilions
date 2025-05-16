@@ -201,10 +201,10 @@ const HexGrid: React.FC = () => {
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div
         ref={containerRef}
-        className="relative touch-none w-full max-w-5xl aspect-square flex items-center justify-center p-2"
+        className="relative touch-none w-full max-w-5xl aspect-square flex items-center justify-center p-4"
         style={{ 
-          height: 'min(95vh, 95vw)',
-          margin: '0 auto'
+          height: 'min(85vh, 85vw)',
+          margin: '2rem auto'
         }}
       >
         <svg

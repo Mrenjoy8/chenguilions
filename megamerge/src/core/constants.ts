@@ -9,8 +9,8 @@ export const TOTAL_TILES = 37; // Total number of tiles in a 5-wide hex grid
 /**
  * Visual configurations
  */
-export const HEX_SIZE = 90; // Size of hex tiles in pixels (increased from 50)
-export const HEX_SPACING = 6; // Space between hex tiles in pixels (increased from 4)
+export const HEX_SIZE = 80; // Size of hex tiles in pixels (reduced by 10% from 90)
+export const HEX_SPACING = 14; // Space between hex tiles in pixels
 
 /**
  * Game progression values
