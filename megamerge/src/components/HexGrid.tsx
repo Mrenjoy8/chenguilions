@@ -124,9 +124,10 @@ const HexGrid: React.FC = () => {
   const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
   
   // Calculate grid sizing
-  const scaleFactor = 2.0; // Increased from 1.2 to make the grid larger
-  const gridWidth = HEX_SIZE * 16 * scaleFactor;
-  const gridHeight = HEX_SIZE * 16 * scaleFactor;
+  const scaleFactor = 1.0; // Reduced to make hexagons appear larger relative to viewBox
+  const baseHexSize = 50; // Fixed base size for consistent viewBox calculation
+  const gridWidth = baseHexSize * 16 * scaleFactor;
+  const gridHeight = baseHexSize * 16 * scaleFactor;
   const svgViewBox = `-${gridWidth / 2} -${gridHeight / 2} ${gridWidth} ${gridHeight}`;
   
   // Handle viewport resizing
@@ -200,9 +201,9 @@ const HexGrid: React.FC = () => {
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div
         ref={containerRef}
-        className="relative touch-none w-full max-w-4xl aspect-square flex items-center justify-center p-4"
+        className="relative touch-none w-full max-w-5xl aspect-square flex items-center justify-center p-2"
         style={{ 
-          height: 'min(80vh, 80vw)',
+          height: 'min(95vh, 95vw)',
           margin: '0 auto'
         }}
       >
