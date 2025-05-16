@@ -1,0 +1,114 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+ Game Architecture
+Separation of Concerns:
+
+Isolate game logic (hex math, merges) from rendering
+
+Example:
+
+/src
+  /core   (pure game logic)
+  /ui     (components)
+  /state  (game state)
+
+Immutable Game State:
+
+Treat the grid as immutable—generate new state on each move
+
+Makes undo/redo trivial to implement
+
+2. Hex Grid Implementation
+Coordinate System:
+
+Use axial coordinates (q, r) for cleaner math
+
+Pre-calculate neighbor offsets for merge checks
+
+Rendering:
+
+SVG for crisp hexagons at any zoom level
+
+CSS clip-path for hexagonal tile masks
+
+3. Performance
+Debounce Input:
+
+Ignore rapid swipes during animations (200ms cooldown)
+
+Object Pooling:
+
+Reuse tile DOM elements instead of recreating
+
+Memoization:
+
+Cache expensive calculations (e.g., "valid moves" check)
+
+4. Code Quality
+Type Safety:
+
+typescript
+type HexCoord = { q: number; r: number };
+type TileValue = 2 | 6 | 18 | 54 | ...; // Explicit progression values
+Testing:
+
+Unit test merge logic with edge cases (e.g., chain reactions)
+
+Snapshot test rendered grid states
+
+5. Player Experience
+Visual Feedback:
+
+Highlight merge triplets for 300ms before combining
+
+Scale tiles slightly on hover/focus
+
+Audio:
+
+Priority: Merge sound → Swipe sound → Background music
+
+Accessibility:
+
+Keyboard controls (WASD + QE for diagonal)
+
+aria-live for screen reader score updates
+
+6. Debugging Aids
+Dev Tools:
+
+Hotkey to log current game state (console.table(grid))
+
+Toggle "cheat mode" for testing merges
+
+Error Boundaries:
+
+Graceful recovery if render fails mid-animation
+
+7. Deployment
+Static Hosting:
+
+Vercel/Netlify for web version (free tier)
+
+Analytics:
+
+Track anonymous metrics (e.g., avg. session time, common loss conditions)
+
+
+⚠️ Pitfalls to Avoid
+Over-engineering state (Redux is overkill for this)
+
+Blocking main thread during merges (use Web Workers for AI later)
+
+Hardcoding grid size (make it configurable for future variants)
+
+Want me to elaborate on any part? For example:
+
+Detailed SVG hex implementation
+
+Zustand state structure
+
+
+Animation performance tweaks
