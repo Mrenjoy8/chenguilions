@@ -8,7 +8,7 @@ import {
 } from '../core/game';
 import { getAllGridCoords } from '../core/hexUtils';
 import { GAME_MODES } from '../core/constants';
-import { findAllTriplets } from '../core/mergeLogic';
+// import { findAllTriplets } from '../core/mergeLogic';
 
 interface GameStore extends GameState {
   // Grid valid coordinates for rendering
