@@ -92,21 +92,6 @@ const HexTile: React.FC<{
       >
         {tile.value}
       </text>
-      {/* Debug helper - shows coordinates */}
-      <text
-        x="0"
-        y={size/2 - 10}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="#333"
-        fontSize={size/6}
-      >
-        {`${tile.position.q},${tile.position.r}`}
-      </text>
-      {/* Indicate if this is a merged tile */}
-      {tile.isMerged && (
-        <circle cx="0" cy="0" r="5" fill="#ff0000" opacity="0.7" />
-      )}
     </motion.g>
   );
 };
@@ -128,16 +113,6 @@ const EmptyCell: React.FC<{
         strokeWidth="1"
         opacity="0.5"
       />
-      <text
-        x="0"
-        y="0"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="#555"
-        fontSize={size/6}
-      >
-        {`${position.q},${position.r}`}
-      </text>
     </g>
   );
 };
@@ -183,15 +158,8 @@ const HexGrid: React.FC = () => {
     if (!isInitialized) {
       resetGame();
       setIsInitialized(true);
-      console.log("Game initialized with tiles:", useGameStore.getState().grid);
     }
   }, [resetGame, isInitialized]);
-  
-  // Log the current state whenever grid changes
-  useEffect(() => {
-    console.log("Current grid state:", grid);
-    console.log("Grid length:", grid.length);
-  }, [grid]);
   
   // Set up keyboard controls
   useEffect(() => {
@@ -228,33 +196,6 @@ const HexGrid: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [moveInDirection, resetGame]);
   
-  // Debug function to create a test tile pattern
-  const debugCreateTestPattern = () => {
-    console.log("Current grid state:", grid);
-    console.log("Grid length:", grid.length);
-    console.log("Valid coordinates count:", validCoords.length);
-    
-    // Display all tiles' positions and values
-    if (grid.length > 0) {
-      console.table(grid.map(tile => ({
-        id: tile.id.slice(0, 8),
-        value: tile.value,
-        q: tile.position.q,
-        r: tile.position.r,
-        isNew: tile.isNew,
-        isMerged: tile.isMerged
-      })));
-    }
-    
-    // Force reset and manually create test tiles
-    const forceStartNewGame = () => {
-      resetGame();
-      console.log("Game reset. New grid size:", grid.length);
-    };
-    
-    forceStartNewGame();
-  };
-  
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div
@@ -286,13 +227,6 @@ const HexGrid: React.FC = () => {
           ))}
         </svg>
       </div>
-      
-      <button 
-        onClick={debugCreateTestPattern}
-        className="mt-4 px-3 py-1 bg-gray-700 text-xs rounded text-white"
-      >
-        Debug (Check Console)
-      </button>
     </div>
   );
 };
